@@ -1,0 +1,66 @@
+html
+  head
+    title B Words Replacer
+    link(href='style.css', rel='stylesheet', type='text/css')
+  body
+    .popup-header
+      table(width='100%')
+        tr
+          td(style='text-align:left;')
+            img(src='images/icon_48.png', style='padding-right:20px;vertical-align:middle;')
+            a.link-youtube(href='http://youtu.be/lcZCdM1Bx_E', target='_blank')
+              img(src='http://pngimg.com/uploads/youtube/youtube_PNG21.png', height='48')
+          td(style='text-align:right;')
+            button#btn_go.btn Search & Replace
+    .popup-body
+      table#tbl_fields(style='text-align:left;')
+        tr
+          th
+          th
+          th Search for
+          th Replace by
+          th
+            button#btn_add_field.btn.btn_info +
+        tr
+          td 1
+          td
+            input#selected_field_1.selected_check(name='selected_field_1', type='checkbox')
+          td
+            span.clearable
+              input#search_1.form-control.data_field.search(name='search_1')
+              span#search_icon_clear_1.icon_clear x
+          td
+            span.clearable
+              input#replace_1.form-control.data_field.replace(name='replace_1')
+              span#replace_icon_clear_1.icon_clear x
+          td.text-center
+            button.btn.btn_remove x
+    footer
+      table(width='100%')
+        tr
+          td
+            table
+              tr
+                td
+                  input#idIsMatchCase.option_check(type='checkbox')
+                td
+                  label(for='idIsMatchCase') Match Case
+              tr
+                td
+                  input#idIsInputFieldOnly.option_check(type='checkbox')
+                td
+                  label(for='idIsInputFieldOnly') Replace in Input/TextArea only
+              tr
+                td
+                  input#idIsRegexUsing.option_check(type='checkbox')
+                td
+                  label(for='idIsRegexUsing') Using Regular Expression
+          td(style='text-align:center;')
+            h4 Help us to improve this app...
+            form.form-donate(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_blank', style='display:inline-table;')
+              input(type='hidden', name='cmd', value='_s-xclick')
+              input(type='hidden', name='hosted_button_id', value='XR358N3E9F5MN')
+              input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif', name='submit', alt='PayPal - The safer, easier way to pay online!')
+              img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+
+    script(src='popup.js')

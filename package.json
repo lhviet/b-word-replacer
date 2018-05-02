@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "ng": "ng",
+    "pug:b": "pug popup.pug",
+    "pug:w": "pug popup.pug -P -w",
+    "ts:w": "tsc -p tsconfig.json -w",
+    "ts:c": "tsc -p tsconfig.json"
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.64",
+    "pug-cli": "^1.0.0-alpha6",
+    "stylelint": "^8.4.0",
+    "stylelint-scss": "^2.2.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
+  }
+}

@@ -1,0 +1,157 @@
+html {
+  width: 450px;
+  height: 250px;
+}
+
+body {
+  margin: 0;
+  background-color: rgba(204, 233, 217, 0.75);
+  font-family: 'Open Sans', arial, sans-serif;
+  font-size: 13px;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+
+  table {
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 13px;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+input[type="checkbox"] {
+  margin: 0 6px 0 0;
+}
+
+.clearable {
+  position: relative;
+}
+
+.popup-header {
+  border-bottom: solid 1px #bababa;
+  padding: 5px 10px;
+}
+
+.popup-body {
+  padding: 15px 10px;
+}
+
+#tbl_fields tr {
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: dashed 1px #dbdbdb;
+  }
+
+  &:last-child td
+  {
+    border-bottom: none;
+  }
+}
+
+footer {
+  padding: 10px;
+  border-top: solid 1px #bababa;
+
+  label {
+    font-size: .9rem;
+    font-weight: 300;
+    color: #636363;
+  }
+}
+
+.data_field {
+  padding-right: 13px; /* add space for the 'x' icon*/
+}
+
+span {
+  .icon_clear {
+    position: absolute;
+    right: 7px;
+    opacity: 1;
+    margin-top: -4px;
+    /* now go with the styling */
+    cursor: pointer;
+    font: bold 1em sans-serif;
+    color: #38468F;
+    top: 3px;
+
+    &:hover {
+      color: #f52;
+    }
+  }
+}
+
+.form-control {
+  display: inline-block;
+  width: 100%;
+  padding: .35rem;
+  font-size: .9rem;
+  line-height: 1.2;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn {
+  display: inline-block;
+  padding: 3px 6px;
+  margin-bottom: 0;
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  &.btn_remove {
+    color: #fff;
+    border-color: #ee7470;
+    background-color: #ff9a96;
+    padding: 0 6px;
+  }
+
+  &.btn_info {
+    color: #fff;
+    background-color: #30aed3;
+    border-color: #46b8da;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0 4px;
+    font-weight: 800;
+  }
+}
+
+#btn_go {
+  color: #fff;
+  background-color: #ff5a5a;
+  border-color: #ed4141;
+  padding: 5px 15px;
+}
+
+.form-donate {
+  display: inline-table;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+
+.link-youtube {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.text-center {
+  text-align: center;
+}

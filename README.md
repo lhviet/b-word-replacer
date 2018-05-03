@@ -14,3 +14,5 @@ Compile to runnable files of Chrome Extension
 * background.ts reponsible for communication (messaging) between the Extension UI and the web page UI
 * Extension UI is *popup.html* and *popup.js*
 * Web page content script is handled in *searchreplace.js*
+
+`popup.js (popup, UI) <---> background.js (messaging) <---> searchreplace.js (functions)`

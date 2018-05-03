@@ -40,7 +40,7 @@ function SearchReplace(search: string, replace: string, matchcase: string, isInp
     handleReplace(textAreas, searchTerm, replace, matchcase);
 
     // Replace words in iframes (input & textarea) if it has
-    if (iframes && iframes.length) {
+    if (iframes.length > 0) {
       for (let i = 0; i < iframes.length; i++) {
         const theIframe = iframes[i];
         if (theIframe.src.match('^http://' + window.location.host) || !theIframe.src.match('^https?')) {
@@ -96,6 +96,7 @@ function setLoading(status: boolean) {
 }
 
 chrome.runtime.onMessage.addListener((message) => {
+  // console.log('message received in searchreplace = ', message);
   const {loading_status, search_for, replace_by, match_case, input_only, input_regrex} = message;
 
   if (!isNaN(loading_status)) {

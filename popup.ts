@@ -9,20 +9,19 @@ function restoreSearchReplace() {
   chrome.storage.sync.get(['srFields', 'isMatchCase', 'isInputFieldOnly', 'isRegexUsing'],
     ({srFields, isMatchCase, isInputFieldOnly, isRegexUsing}) => {
       if (srFields) {
-
         // adding enough fields for filling stored data
         while (document.getElementsByClassName('data_field search').length < srFields.length) {
           addNewField();
         }
 
-        const selectedChecks = document.getElementsByClassName('selected_check');
-        const inputSearches = document.getElementsByClassName('data_field search');
-        const inputReplaces = document.getElementsByClassName('data_field replace');
+        const selectedChecks = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('selected_check');
+        const inputSearches = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('data_field search');
+        const inputReplaces = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByClassName('data_field replace');
 
-        srFields.map((item, index) => {
-          (<HTMLInputElement> selectedChecks[index]).checked = item.isActive;
-          (<HTMLInputElement> inputSearches[index]).value = item.searchValue;
-          (<HTMLInputElement> inputReplaces[index]).value = item.replaceValue;
+        (<ISearchReplace[]> srFields).forEach((item: ISearchReplace, index) => {
+          selectedChecks[index].checked = item.isActive;
+          inputSearches[index].value = item.searchValue;
+          inputReplaces[index].value = item.replaceValue;
         });
       }
 
@@ -41,11 +40,10 @@ function restoreSearchReplace() {
 // Store all Search and handleReplace's values
 const storeSearchReplace = () => {
   const srFields: ISearchReplace[] = [];
-
   // Collect values of Search & Replaces
-  const selectedChecks = document.getElementsByClassName('selected_check');
+  const selectedChecks = <HTMLCollectionOf<HTMLInputElement>>document.getElementsByClassName('selected_check');
   for (let i = 0; i < selectedChecks.length; i++) {
-    const item = <HTMLInputElement> selectedChecks[i];
+    const item = selectedChecks[i];
     try {
       const parent = item.parentElement.parentElement;
 
@@ -79,9 +77,11 @@ const storeSearchReplace = () => {
   });
 };
 
-//Add new fields of Search & handleReplace
+// Add new fields of Search & handleReplace
 function addNewField() {
+
   const numberOfSearchFields = document.getElementsByClassName('data_field search').length + 1;
+
   const tr = document.createElement('tr');
 
   const td0 = document.createElement('td');
@@ -113,11 +113,11 @@ function addNewField() {
   tr.appendChild(td4);
 
   const tbl = document.getElementById('tbl_fields');
-  const tbodies = tbl.getElementsByTagName('tbody');
-  if (tbodies && tbodies.length > 0) {
-    const tbody = tbodies[0];
+  const tbody = tbl.getElementsByTagName('tbody')[0];
+  if (tbody) {
     tbody.appendChild(tr);
 
+    // setup handlers for new added fields
     setupHandlerInputCleared();
     setupHandlerInputChanged();
     setupHandlerInputRemoved();
@@ -182,7 +182,7 @@ function setupHandlerAddField() {
 function setupHandlerSearchAndReplace() {
   const btnGo = document.getElementById('btn_go');
   btnGo.addEventListener('click', () => {
-    // send message to notify in background (background.js)
+    // send message to notify in background (background.js, and background using searchreplace to process)
     chrome.runtime.sendMessage({search_replace: true});
   });
 }
@@ -202,6 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // doing Restore
   restoreSearchReplace();
 
-// listening for message sent from background (search & replace job done, the popup UI should be closed)
+  // listening for message sent from background (search & replace job done, the popup UI should be closed)
   chrome.runtime.onMessage.addListener(({popup_should_close}) => popup_should_close && window.close());
 });
